@@ -1,0 +1,1 @@
+!function(){"use strict";angular.module("serverRequestApp",["requestService"])}(),function(){"use strict";function a(a,b){a.request=b.query()}angular.module("serverRequestApp").controller("requestController",a),a.$inject=["$scope","Requests"]}();

@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html ng-app="serverRequestApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Server request app</title>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-resource/angular-resource.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-cloak>
+    <div ng-controller="requestController">
+        <h2>List of request</h2>
+        <ul>
+            <li ng-repeat="request in Requests">
+                <p>"{{request.ServerName}}" - {{request.Requestor}}</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
