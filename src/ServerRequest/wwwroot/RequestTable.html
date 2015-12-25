@@ -8,7 +8,7 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="requestItem in itemCollection">
-                        <td>{{requestItem.ServerName}}</td>
+                        <td><a href="#" ng-click="$parent.details='/Details.html'">{{requestItem.ServerName}}</a></td>
                         <td>{{requestItem.Requestor}}</td>
                     </tr>
                 </tbody>
