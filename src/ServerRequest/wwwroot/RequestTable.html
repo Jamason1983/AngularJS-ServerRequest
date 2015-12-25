@@ -1,0 +1,15 @@
+﻿            <h2>List of request</h2>
+            <table id="serverRequestTable" border="0" st-table="displayedCollection" st-safe-src="itemCollection" st-persist="officeTable" class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th st-sort="ServerName">Server Name<i st-sort="ServerName"></i></th>
+                        <th st-sort="Requestor">Requestor<i st-sort="Requestor"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="requestItem in itemCollection">
+                        <td>{{requestItem.ServerName}}</td>
+                        <td>{{requestItem.Requestor}}</td>
+                    </tr>
+                </tbody>
+            </table>
