@@ -20,12 +20,13 @@
 </head>
 <body ng-app="app">
     <div ng-controller="requestController">
-        <div class="span9" id="dvLeftNav">
-            <div ng-include src="'/RequestTable.html'"></div>
+        <div class="col-md-9" id="dvLeftNav">
+            <ng-include src="template"></ng-include>
         </div>
-        <div>
+        <div class="col-md-3" id="divRightNav">
             <ul>
-                <li>Server Requests</li>
+                <li><a href="#" ng-click="$parent.template='/RequestTable.html'">Server Requests</a></li>
+                <li><a href="#" ng-click="$parent.template='/RequestTable.html'">New Requests</a></li>
             </ul>
         </div>
     </div>
