@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="serverRequestApp">
+<html>
 <head>
     <meta charset="utf-8" />
     <title>Server request app</title>
@@ -8,14 +8,23 @@
     <script src="lib/angular-route/angular-route.min.js"></script>
     <script src="app.js"></script>
 </head>
-<body ng-cloak>
+<body ng-app="app">
     <div ng-controller="requestController">
         <h2>List of request</h2>
-        <ul>
-            <li ng-repeat="request in Requests">
-                <p>"{{request.ServerName}}" - {{request.Requestor}}</p>
-            </li>
-        </ul>
+        <table border="0">
+            <thead>
+                <tr>
+                    <th>Server Name</th>
+                    <th>Requestor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="requestItem in itemCollection">
+                    <td>{{requestItem.ServerName}}</td>
+                    <td>{{requestItem.Requestor}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
