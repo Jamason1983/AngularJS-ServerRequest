@@ -1,4 +1,4 @@
-﻿var app = angular.module("app", []);
+﻿var app = angular.module("app", ['smart-table']);
 app.controller('requestController', ['$scope', '$http', '$log', function ($scope, $http, $log) {
 
     $scope.itemCollection = [];
@@ -9,9 +9,8 @@ app.controller('requestController', ['$scope', '$http', '$log', function ($scope
         headers: { 'Accept': 'application/json' }
     }).then(function (responce) {
         $scope.itemCollection = responce.data;
-        console.log("Values inside of $http scope: " + $scope.itemCollection.length);
+        $scope.displayedCollection = [].concat($scope.itemCollection);
     }).finally(function () {
-        console.log("Values outside of $http scope: " + $scope.itemCollection.length);
+        
     });
-
 }]);

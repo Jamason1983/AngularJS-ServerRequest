@@ -6,16 +6,25 @@
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-resource/angular-resource.min.js"></script>
     <script src="lib/angular-route/angular-route.min.js"></script>
+    <script src="lib/angular-smart-table/dist/smart-table.min.js"></script>
     <script src="app.js"></script>
+    <style type="text/css">
+        #serverRequestTable th {
+            background-color:#70B8FF;
+        }
+        #serverRequestTable tr:nth-child(2n+1){
+            background-color: #D6EBFF;
+        }
+    </style>
 </head>
 <body ng-app="app">
     <div ng-controller="requestController">
         <h2>List of request</h2>
-        <table border="0">
+        <table id="serverRequestTable" border="0" st-table="displayedCollection" st-safe-src="itemCollection" st-persist="officeTable" class="table table-condensed">
             <thead>
                 <tr>
-                    <th>Server Name</th>
-                    <th>Requestor</th>
+                    <th st-sort="ServerName">Server Name<i  st-sort="ServerName"></i></th>
+                    <th st-sort="Requestor">Requestor<i st-sort="Requestor"></i></th>
                 </tr>
             </thead>
             <tbody>
