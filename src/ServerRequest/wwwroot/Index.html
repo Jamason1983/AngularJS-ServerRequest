@@ -26,12 +26,10 @@
         <div class="col-md-3" id="divRightNav">
             <ul>
                 <li><a href="#" ng-click="$parent.template='/RequestTable.html'">Server Requests</a></li>
-                <li><a href="#" ng-click="$parent.template='/NewRequest.html'">New Requests</a></li>
+                <li><a href="#" ng-click="$parent.template='/NewRequest.html';clearDetails()">New Requests</a></li>
             </ul>
             <br />
-            <div>
-                <ng-include src="details"></ng-include>
-            </div>
+            <div ng-include src="'/Details.html'" ng-show="showDetails"></div>
         </div>
     </div>
 </body>

@@ -1,55 +1,57 @@
 ﻿<form ng-submit="serverSubmit()">
     Requestor:
-    <input type="text" name="requestor" ng-model="requestorVal" />
+    <input type="text" name="requestor" ng-model="serverForm.serverRequestorVal" />
+    <br />
+    ServerName:
+    <input type="text" name="serverName" ng-model="serverForm.serverNameVal" />
     <br />
     Domain:
-    <select ng-model="serverDomainVal" ng-change="serverFormValidation('Domain',serverDomainVal)"
+    <select ng-model="serverForm.serverDomainVal" ng-change="setServerDoaminVal(serverForm)"
             data-ng-options="optionsObjectServerDomain as optionsObjectServerDomain.name for optionsObjectServerDomain in optionsObjectServerDomains">
         <option value="">Select Domain</option>
     </select>
     <br />
     OS:
-    <select ng-model="serverOSVal"
+    <select ng-model="serverForm.serverOSVal"
             data-ng-options="optionsObjectServerOS as optionsObjectServerOS.name for optionsObjectServerOS in optionsObjectServerOSs">
         <option value="">Select OS</option>
     </select>
     <br />
     Datacenter:
-    <select ng-model="serverDatacenterVal"
+    <select ng-model="serverForm.serverDatacenterVal"
             data-ng-options="optionsObjectServerDatacenter as optionsObjectServerDatacenter.name for optionsObjectServerDatacenter in optionsObjectServerDatacenters">
         <option value="">Select Datacenter</option>
     </select>
     <br />
     vCores:
-    <select ng-model="serverCoresVal"
+    <select ng-model="serverForm.serverCoresVal"
             data-ng-options="optionsObjectServerCore as optionsObjectServerCore.name for optionsObjectServerCore in optionsObjectServerCores">
         <option value="">Select OS</option>
     </select>
     <br />
     RAM:
-    <select ng-model="serverRAMVal"
+    <select ng-model="serverForm.serverRAMVal"
             data-ng-options="optionsObjectServerRAM as optionsObjectServerRAM.name for optionsObjectServerRAM in optionsObjectServerRAMs">
         <option value="">Select OS</option>
     </select>
     <br />
     Drives:
     <ul>
-        <li ng-repeat="serverDrive in serverDrives">
+        <li ng-repeat="serverDrive in serverForm.serverDrives">
             <a href="#" ng-click="removeServerDrive($index)">Remove Drive</a> | DriveId: {{serverDrive.DriveId}} - Size: {{serverDrive.Size}} - Display Name: {{serverDrive.DisplayName}}
         </li>
     </ul>
     <div>
         Size:
-        <input type="number" ng-model="serverDriveSizeInput" ng-minlength="1" ng-maxlength="4" required /><br />
+        <input id="serverDriveSizeInput" type="number" ng-model="serverDriveSizeInput" ng-minlength="1" ng-maxlength="4" /><br />
         DriveId:
-        <input type="Text" ng-model="serverDriveDriveIdInput" ng-minlength="1" ng-maxlength="2" required/><br />
+        <input id="serverDriveDriveIdInput" type="Text" ng-model="serverDriveDriveIdInput" ng-minlength="1" ng-maxlength="2"/><br />
         DisplayName:
-        <input type="Text" ng-model="serverDriveDisplayNameInput" ng-minlength="1" ng-maxlength="50"/><br />
-        <button type="submit" ng-click="addServerDrive(serverDriveSizeInput,serverDriveDriveIdInput,serverDriveDisplayNameInput)" ng-disabled="serverDriveSizeInput == null || serverDriveDriveIdInput == null">+</button>
-        {{serverDrives.length}}
+        <input id="serverDriveDisplayNameInput" type="Text" ng-model="serverDriveDisplayNameInput" ng-minlength="1" ng-maxlength="50"/><br />
+        <button type="button" ng-click="addServerDrive(serverDriveSizeInput,serverDriveDriveIdInput,serverDriveDisplayNameInput)" ng-disabled="serverDriveSizeInput == null || serverDriveDriveIdInput == null">+</button>
     </div>
     <br />
     <br />
-    <input type="submit" value="Submit" id="serverSubmit" ng-disabled="requestorVal == '' || serverDomainVal == null || serverOSVal == null || serverDatacenterVal == null || serverCoresVal == null || serverRAMVal == null">
+    <input type="submit" value="Submit" id="serverSubmit" ng-disabled="serverForm.serverRequestorVal == '' || serverForm.serverDomainVal == null || serverForm.serverOSVal == null || serverForm.serverDatacenterVal == null || serverForm.serverCoresVal == null || serverForm.serverRAMVal == null">
     <pre>list={{list}}</pre>
 </form>

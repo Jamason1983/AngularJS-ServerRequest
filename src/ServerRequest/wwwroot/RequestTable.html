@@ -2,13 +2,15 @@
             <table id="serverRequestTable" border="0" st-table="displayedCollection" st-safe-src="itemCollection" st-persist="officeTable" class="table table-condensed">
                 <thead>
                     <tr>
+                        <th st-sort="Id">Id<i st-sort="Id"></i></th>
                         <th st-sort="ServerName">Server Name<i st-sort="ServerName"></i></th>
                         <th st-sort="Requestor">Requestor<i st-sort="Requestor"></i></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="requestItem in itemCollection">
-                        <td><a href="#" ng-click="$parent.details='/Details.html'">{{requestItem.ServerName}}</a></td>
+                        <td>{{requestItem.Id}}</td>
+                        <td><a href="#" ng-click="viewServerDetails(requestItem)">{{requestItem.ServerName}}</a></td>
                         <td>{{requestItem.Requestor}}</td>
                     </tr>
                 </tbody>
