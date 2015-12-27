@@ -1,69 +1,55 @@
-﻿<form>
+﻿<form ng-submit="serverSubmit()">
     Requestor:
-    <input type="text" name="requestor" />
+    <input type="text" name="requestor" ng-model="requestorVal" />
     <br />
     Domain:
-    <select>
-        <option value="puget">Puget</option>
-        <option value="psetest">psetest</option>
-        <option value="gasprod">GasProd</option>
-        <option value="gastest">GasTest</option>
+    <select ng-model="serverDomainVal" ng-change="serverFormValidation('Domain',serverDomainVal)"
+            data-ng-options="optionsObjectServerDomain as optionsObjectServerDomain.name for optionsObjectServerDomain in optionsObjectServerDomains">
+        <option value="">Select Domain</option>
     </select>
     <br />
     OS:
-    <select>
-        <option value="2008r2">Windows 2008 R2</option>
-        <option value="2012">Windows 2012</option>
-        <option value="2012r2">Windows 201 R2</option>
-        <option value="Suse">Suse</option>
-        <option value="CentOS">CentOS</option>
+    <select ng-model="serverOSVal"
+            data-ng-options="optionsObjectServerOS as optionsObjectServerOS.name for optionsObjectServerOS in optionsObjectServerOSs">
+        <option value="">Select OS</option>
     </select>
     <br />
     Datacenter:
-    <select>
-        <option value="Bothel">Bothel</option>
-        <option value="Belevue">Belevue</option>
+    <select ng-model="serverDatacenterVal"
+            data-ng-options="optionsObjectServerDatacenter as optionsObjectServerDatacenter.name for optionsObjectServerDatacenter in optionsObjectServerDatacenters">
+        <option value="">Select Datacenter</option>
     </select>
     <br />
     vCores:
-    <select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-        <option value="16">16</option>
+    <select ng-model="serverCoresVal"
+            data-ng-options="optionsObjectServerCore as optionsObjectServerCore.name for optionsObjectServerCore in optionsObjectServerCores">
+        <option value="">Select OS</option>
     </select>
     <br />
     RAM:
-    <select>
-        <option value="2">2GB</option>
-        <option value="4">4GB</option>
-        <option value="6">6GB</option>
-        <option value="8">8GB</option>
-        <option value="10">10GB</option>
-        <option value="12">12GB</option>
-        <option value="14">14GB</option>
-        <option value="16">16GB</option>
-        <option value="20">20GB</option>
-        <option value="24">24GB</option>
-        <option value="28">28GB</option>
-        <option value="32">32GB</option>
-        <option value="36">36GB</option>
-        <option value="40">40GB</option>
-        <option value="44">44GB</option>
-        <option value="48">48GB</option>
+    <select ng-model="serverRAMVal"
+            data-ng-options="optionsObjectServerRAM as optionsObjectServerRAM.name for optionsObjectServerRAM in optionsObjectServerRAMs">
+        <option value="">Select OS</option>
     </select>
-    <br /><br />
-    <input type="submit" value="Submit">
+    <br />
+    Drives:
+    <ul>
+        <li ng-repeat="serverDrive in serverDrives">
+            <a href="#" ng-click="removeServerDrive($index)">Remove Drive</a> | DriveId: {{serverDrive.DriveId}} - Size: {{serverDrive.Size}} - Display Name: {{serverDrive.DisplayName}}
+        </li>
+    </ul>
+    <div>
+        Size:
+        <input type="number" ng-model="serverDriveSizeInput" ng-minlength="1" ng-maxlength="4" required /><br />
+        DriveId:
+        <input type="Text" ng-model="serverDriveDriveIdInput" ng-minlength="1" ng-maxlength="2" required/><br />
+        DisplayName:
+        <input type="Text" ng-model="serverDriveDisplayNameInput" ng-minlength="1" ng-maxlength="50"/><br />
+        <button type="submit" ng-click="addServerDrive(serverDriveSizeInput,serverDriveDriveIdInput,serverDriveDisplayNameInput)" ng-disabled="serverDriveSizeInput == null || serverDriveDriveIdInput == null">+</button>
+        {{serverDrives.length}}
+    </div>
+    <br />
+    <br />
+    <input type="submit" value="Submit" id="serverSubmit" ng-disabled="requestorVal == '' || serverDomainVal == null || serverOSVal == null || serverDatacenterVal == null || serverCoresVal == null || serverRAMVal == null">
+    <pre>list={{list}}</pre>
 </form>
