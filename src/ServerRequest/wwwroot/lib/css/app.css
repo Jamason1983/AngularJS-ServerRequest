@@ -1,0 +1,13 @@
+﻿
+ul{
+    padding:0px;
+    margin:0px;
+    list-style-type: none;
+}
+
+#serverRequestTable th {
+    background-color: #70B8FF;
+}
+#serverRequestTable tr:nth-child(2n+1) {
+    background-color: #D6EBFF;
+}

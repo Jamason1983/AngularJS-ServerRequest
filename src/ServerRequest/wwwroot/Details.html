@@ -1,5 +1,5 @@
 ﻿<h3>Server Request:</h3>
-Server Name: {{serverDetailsObject.ServerName}}
+Server Name: <b>{{serverDetailsObject.ServerName}}</b>
 <br />
 Requestor: {{serverDetailsObject.Requestor}}
 <br />
@@ -13,4 +13,20 @@ Cores: {{serverDetailsObject.Cores}}
 <br />
 RAM: {{serverDetailsObject.RAM}}
 <br />
-Drives: {{serverDetailsObject.Drives}}
+Drives:
+<table>
+    <thead>
+        <tr>
+            <td>DriveId</td>
+            <td>Size</td>
+            <td>Dixplay Name</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="serverDrive in serverDetailsObject.Drives">
+            <td>{{serverDrive.DriveId}}</td>
+            <td>{{serverDrive.Size}}</td>
+            <td>{{serverDrive.DisplayName}}</td>
+        </tr>
+    </tbody>
+</table>

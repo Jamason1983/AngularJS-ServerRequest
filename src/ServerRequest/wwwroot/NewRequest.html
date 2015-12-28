@@ -1,57 +1,96 @@
 ﻿<form ng-submit="serverSubmit()">
-    Requestor:
-    <input type="text" name="requestor" ng-model="serverForm.serverRequestorVal" />
-    <br />
-    ServerName:
-    <input type="text" name="serverName" ng-model="serverForm.serverNameVal" />
-    <br />
-    Domain:
-    <select ng-model="serverForm.serverDomainVal" ng-change="setServerDoaminVal(serverForm)"
-            data-ng-options="optionsObjectServerDomain as optionsObjectServerDomain.name for optionsObjectServerDomain in optionsObjectServerDomains">
-        <option value="">Select Domain</option>
-    </select>
-    <br />
-    OS:
-    <select ng-model="serverForm.serverOSVal"
-            data-ng-options="optionsObjectServerOS as optionsObjectServerOS.name for optionsObjectServerOS in optionsObjectServerOSs">
-        <option value="">Select OS</option>
-    </select>
-    <br />
-    Datacenter:
-    <select ng-model="serverForm.serverDatacenterVal"
-            data-ng-options="optionsObjectServerDatacenter as optionsObjectServerDatacenter.name for optionsObjectServerDatacenter in optionsObjectServerDatacenters">
-        <option value="">Select Datacenter</option>
-    </select>
-    <br />
-    vCores:
-    <select ng-model="serverForm.serverCoresVal"
-            data-ng-options="optionsObjectServerCore as optionsObjectServerCore.name for optionsObjectServerCore in optionsObjectServerCores">
-        <option value="">Select OS</option>
-    </select>
-    <br />
-    RAM:
-    <select ng-model="serverForm.serverRAMVal"
-            data-ng-options="optionsObjectServerRAM as optionsObjectServerRAM.name for optionsObjectServerRAM in optionsObjectServerRAMs">
-        <option value="">Select OS</option>
-    </select>
-    <br />
-    Drives:
-    <ul>
-        <li ng-repeat="serverDrive in serverForm.serverDrives">
-            <a href="#" ng-click="removeServerDrive($index)">Remove Drive</a> | DriveId: {{serverDrive.DriveId}} - Size: {{serverDrive.Size}} - Display Name: {{serverDrive.DisplayName}}
-        </li>
-    </ul>
-    <div>
-        Size:
-        <input id="serverDriveSizeInput" type="number" ng-model="serverDriveSizeInput" ng-minlength="1" ng-maxlength="4" /><br />
-        DriveId:
-        <input id="serverDriveDriveIdInput" type="Text" ng-model="serverDriveDriveIdInput" ng-minlength="1" ng-maxlength="2"/><br />
-        DisplayName:
-        <input id="serverDriveDisplayNameInput" type="Text" ng-model="serverDriveDisplayNameInput" ng-minlength="1" ng-maxlength="50"/><br />
-        <button type="button" ng-click="addServerDrive(serverDriveSizeInput,serverDriveDriveIdInput,serverDriveDisplayNameInput)" ng-disabled="serverDriveSizeInput == null || serverDriveDriveIdInput == null">+</button>
-    </div>
-    <br />
-    <br />
-    <input type="submit" value="Submit" id="serverSubmit" ng-disabled="serverForm.serverRequestorVal == '' || serverForm.serverDomainVal == null || serverForm.serverOSVal == null || serverForm.serverDatacenterVal == null || serverForm.serverCoresVal == null || serverForm.serverRAMVal == null">
-    <pre>list={{list}}</pre>
+    <table>
+        <tr>
+            <td>
+                Requestor:
+            </td>
+            <td>
+                <input type="text" name="requestor" ng-model="serverForm.serverRequestorVal" />
+            </td>
+        </tr>
+        <tr>
+            <td>ServerName:</td>
+            <td><input type="text" name="serverName" ng-model="serverForm.serverNameVal" /></td>
+        </tr>
+        <tr>
+            <td>Domain:</td>
+            <td>
+                <select ng-model="serverForm.serverDomainVal" ng-change="setServerDoaminVal(serverForm)"
+                        data-ng-options="optionsObjectServerDomain as optionsObjectServerDomain.name for optionsObjectServerDomain in optionsObjectServerDomains">
+                    <option value="">Select Domain</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>OS:</td>
+            <td>
+                <select ng-model="serverForm.serverOSVal"
+                        data-ng-options="optionsObjectServerOS as optionsObjectServerOS.name for optionsObjectServerOS in optionsObjectServerOSs">
+                    <option value="">Select OS</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Datacenter:</td>
+            <td>
+                <select ng-model="serverForm.serverDatacenterVal"
+                        data-ng-options="optionsObjectServerDatacenter as optionsObjectServerDatacenter.name for optionsObjectServerDatacenter in optionsObjectServerDatacenters">
+                    <option value="">Select Datacenter</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>vCores:</td>
+            <td>
+                <select ng-model="serverForm.serverCoresVal"
+                        data-ng-options="optionsObjectServerCore as optionsObjectServerCore.name for optionsObjectServerCore in optionsObjectServerCores">
+                    <option value="">Select OS</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>RAM:</td>
+            <td>
+                <select ng-model="serverForm.serverRAMVal"
+                        data-ng-options="optionsObjectServerRAM as optionsObjectServerRAM.name for optionsObjectServerRAM in optionsObjectServerRAMs">
+                    <option value="">Select OS</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">Drives:</td>
+            <td align="left">
+                    <ul class="ul.none">
+                        <li ng-repeat="serverDrive in serverForm.serverDrives">
+                            <a href="#" ng-click="removeServerDrive($index)">Remove Drive</a> | DriveId: {{serverDrive.DriveId}} - Size: {{serverDrive.Size}} - Display Name: {{serverDrive.DisplayName}}
+                        </li>
+                    </ul>
+                <table style="margin-top:4px;">
+                    <tr>
+                        <td>Size:</td>
+                        <td><input id="serverDriveSizeInput" type="number" ng-model="serverForm.serverDriveSizeInput" ng-minlength="1" ng-maxlength="4" /></td>
+                    </tr>
+                    <tr>
+                        <td>DriveId:</td>
+                        <td><input id="serverDriveDriveIdInput" type="Text" ng-model="serverForm.serverDriveDriveIdInput" ng-minlength="1" ng-maxlength="2" /></td>
+                    </tr>
+                    <tr>
+                        <td>DisplayName:</td>
+                        <td><input id="serverDriveDisplayNameInput" type="Text" ng-model="serverForm.serverDriveDisplayNameInput" ng-minlength="1" ng-maxlength="50" /></td>
+                    </tr>
+                </table>
+                <div>
+                    <button class="btn" type="button" ng-click="addServerDrive(serverForm.serverDriveSizeInput,serverForm.serverDriveDriveIdInput,serverForm.serverDriveDisplayNameInput)" ng-disabled="serverForm.serverDriveSizeInput == '' || serverForm.serverDriveDriveIdInput == ''">+</button>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input class="btn" type="submit" value="Submit" id="serverSubmit" ng-disabled="serverForm.serverRequestorVal == ''||serverForm.serverNameVal == '' || serverForm.serverDomainVal.value == null || serverForm.serverOSVal.value == null || serverForm.serverDatacenterVal.value == null || serverForm.serverCoresVal.value == null || serverForm.serverRAMVal.value == null">
+            </td>
+            <td></td>
+        </tr>
+
+    
+    </table>
 </form>

@@ -5,7 +5,7 @@ app.controller('requestController', ['$scope', '$http', '$log', function ($scope
     //Initalize scope values.
     $scope.showDetails = false;
     $scope.serverForm = {}
-    $scope.serverForm.serverRequestorVal = "jamason";
+    $scope.serverForm.serverRequestorVal = '';
     $scope.serverForm.serverNameVal = '';
     $scope.serverForm.serverDomainVal = {};
     $scope.serverForm.serverOSVal = {};
@@ -13,7 +13,13 @@ app.controller('requestController', ['$scope', '$http', '$log', function ($scope
     $scope.serverForm.serverCoresVal = {};
     $scope.serverForm.serverRAMVal = {};
     $scope.itemCollection = [];
-    $scope.serverDetailsObject = {}
+    $scope.serverDetailsObject = {};
+    $scope.serverForm.serverDriveSizeInput = '';
+    $scope.serverForm.serverDriveDriveIdInput = '';
+    $scope.serverForm.serverDriveDisplayNameInput = '';
+    $scope.mouseY = {};
+
+
 
     $scope.serverForm.serverDrives = [
         { Size: 60, DriveId: "C:", DisplayName: "OS" }
@@ -22,6 +28,9 @@ app.controller('requestController', ['$scope', '$http', '$log', function ($scope
     $scope.addServerDrive = function (size, driveId, displayName) {
         var newvalue = { Size: size, DriveId: driveId, DisplayName: displayName }
         $scope.serverForm.serverDrives.push(newvalue);
+        $scope.serverForm.serverDriveSizeInput = '';
+        $scope.serverForm.serverDriveDriveIdInput = '';
+        $scope.serverForm.serverDriveDisplayNameInput = '';
         document.getElementById("serverDriveSizeInput").value = "";
         document.getElementById('serverDriveDriveIdInput').value = "";
         document.getElementById('serverDriveDisplayNameInput').value = "";
@@ -43,6 +52,15 @@ app.controller('requestController', ['$scope', '$http', '$log', function ($scope
     $scope.viewServerDetails = function (object) {
         $scope.showDetails = true;
         $scope.serverDetailsObject = object;
+        
+        $(document).on("mousedown", function (event) {
+            $scope.mouseY = event.pageY - 35;
+        });
+
+        $("body").mousedown(function (e) {
+            
+            //alert(e.offsetX + " " + e.offsetY);
+        });
     };
 
     
@@ -92,7 +110,6 @@ app.controller('requestController', ['$scope', '$http', '$log', function ($scope
         });
 
     };
-
 
 
     $scope.optionsObjectServerDomains = [{ name: "puget.com", value: "puget" }, { name: "PSETest", value: "psetest" }];
