@@ -7,27 +7,31 @@
     <script src="lib/angular-resource/angular-resource.min.js"></script>
     <script src="lib/angular-route/angular-route.min.js"></script>
     <script src="lib/angular-smart-table/dist/smart-table.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="app.js"></script>
     <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style type="text/css">
+    <link href="lib/css/app.css" rel="stylesheet" />
+    <!--<style type="text/css">
         #serverRequestTable th {
             background-color:#70B8FF;
         }
         #serverRequestTable tr:nth-child(2n+1){
             background-color: #D6EBFF;
         }
-    </style>
+    </style>-->
 </head>
 <body ng-app="app">
     <div ng-controller="requestController">
-        <div class="col-md-9" id="dvLeftNav">
+        <div class="col-md-5" id="dvLeftNav">
             <ng-include src="template"></ng-include>
         </div>
         <div class="col-md-3" id="divRightNav">
             <ul>
                 <li><a href="#" ng-click="$parent.template='/RequestTable.html'">Server Requests</a></li>
-                <li><a href="#" ng-click="$parent.template='/RequestTable.html'">New Requests</a></li>
+                <li><a href="#" ng-click="$parent.template='/NewRequest.html';clearDetails()">New Requests</a></li>
             </ul>
+            <br />
+            <div id="serverDetailsPane" style="position:absolute;z-index:50;top:{{mouseY}}px;" ng-include src="'/Details.html'" ng-show="showDetails"></div>
         </div>
     </div>
 </body>
